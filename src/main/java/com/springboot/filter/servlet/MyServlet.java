@@ -24,17 +24,20 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/myServlet")
 public class MyServlet extends HttpServlet {
 
+
+    // 访问方式: http://localhost:8080/demo/myServlet
+
     private static final long serialVersionUID = -7864798058212193346L;
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.getWriter().print("My Servlet Hello World!!!");
         response.getWriter().flush();
         response.getWriter().close();
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        this.doGet(request, response);
     }
 }
